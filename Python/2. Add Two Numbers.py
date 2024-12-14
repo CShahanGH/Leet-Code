@@ -78,7 +78,13 @@ class Solution(object):
             #Store Return List Values
             l3_list.append(val)
         
-        #Make Return List
+        #Make Return Linked List
+        l3 = l3tail = ListNode(l3_list[0])
+        for x in range(1, len(l3_list)):
+            l3tail.next = ListNode(l3_list[x])
+            l3tail = l3tail.next
+        
+        return l3
 
         
 """Test Code"""
@@ -86,50 +92,13 @@ class Solution(object):
         
 l1 = ListNode(2, ListNode(4, ListNode(3)))
 l2 = ListNode(5, ListNode(6, ListNode(4)))
-l3_list = []
-
- #Find Sum1
-sum1 = 0
-decimal = 1
-
-#Traverse nodes until the current node doesn't have a next node
-while True:
-    sum1 += l1.val * decimal
-
-    l1 = l1.next
-    decimal *= 10
-
-    if l1 == None:
-        break
-
-print(sum1)
-
-#Find Sum2
-sum2 = 0
-decimal = 1
-while True:
-    sum2 += l2.val * decimal
-
-    l2 = l2.next
-    decimal *= 10
-
-    if l2 == None:
-        break
-
-print(sum2)
-
-sum1_sum2 = sum1 + sum2
-print(sum1_sum2)
-
-#Convert the sum into a string
-str_sum1_sum2 = str(sum1_sum2)
-#Count backwards 
-for i in range (len(str_sum1_sum2), 0, -1):
-    #Convert each string to an int 
-    val = int(str_sum1_sum2[i-1])
-    #Make Return List
-    l3_list.append(val)
-
 
           
 test = Solution()
+l3 = test.addTwoNumbers(l1, l2)
+while True:
+    print(l3.val)
+    l3 = l3.next
+
+    if l3 == None:
+        break
