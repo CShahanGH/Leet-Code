@@ -60,7 +60,7 @@ class Solution(object):
         """
         totalsize = len(nums1) + len(nums2)
 
-        odd = False if totalsize % 2 == 1 else True
+        odd = True if totalsize % 2 == 1 else False
 
         #Floor Division
         mid1 = len(nums1) // 2
