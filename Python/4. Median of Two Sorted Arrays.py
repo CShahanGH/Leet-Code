@@ -28,25 +28,11 @@ nums2.length == n
 
 #Idea 
 """
-Return fast, Cover edge cases such as empty arrays, or single number arrays
+For logrithmic time I need to use a divide and conquer strategy. 
 
-Make a new array with the sorted values and 
+Start by calculating the midpoint of each array.
 
-
-
-Ex. [1,2,3,4,5] [3,4]
-Odd Length
-Mid = 3, 3 
-
-Return 3
-
-Ex. [1, 3, 4, 5, 6] [7, 8, 9, 12]
-
-median = 6 
-
-Odd length 
-
-Mid = 4, 9
+Compare both midpoint values then ignore partion of the arrays not needed and calculate new midpoint 
 
 
 
@@ -59,54 +45,8 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: float
         """
-
-        if len(nums1) == 0 and len(nums2) == 0:
-            return 0
-
-        if len(nums1) == 0 and len(nums2) == 1:
-            return nums2[0]
-
-        if len(nums1) == 1 and len(nums2) == 0:
-            return nums1[0]
-        
-        merge = []
-
-        inums1 = 0
-        inums2 = 0
-        while True: 
-            if inums1 > len(nums1) - 1 and inums2 > len(nums2) - 1:
-                break
-            if inums1 > len(nums1) - 1:
-                merge.append(nums2[inums2])
-                inums2 = inums2 + 1
-                continue
-            if inums2 > len(nums2) - 1:
-                merge.append(nums1[inums1])
-                inums1 = inums1 + 1
-                continue
-            if nums1[inums1] < nums2[inums2]:
-                merge.append(nums1[inums1])
-                inums1 = inums1 + 1
-            else: 
-                merge.append(nums2[inums2])
-                inums2 = inums2 + 1
-
-            
-        odd = True if len(merge) % 2 != 0 else False 
-
-        if odd:
-            return merge[int(len(merge)/2)]
-        else:
-            return (merge[int(len(merge)/2)] + merge[int(len(merge)/2) - 1])/2
-            
-
-
-
-        
-            
-            
+    
                 
-
 test = Solution()
 
 nums1 = [1,2]
