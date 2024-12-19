@@ -30,10 +30,23 @@ nums2.length == n
 """
 For logrithmic time I need to use a divide and conquer strategy. 
 
-Start by calculating the midpoint of each array.
+We need to check if the two arrays combined is even or odd becasue if the combined array is old the median is in the middle, but if the array is even the median is the middle two digits/2
 
-Compare both midpoint values then ignore partion of the arrays not needed and calculate new midpoint 
+We need to calculate the midpoint of each array.
 
+Compare midpoints and remove a partion of an array.
+
+We need to recalculate the midpont of each array so we might want to use a recursive function 
+
+helper(mid, nums1, nums2)
+{
+base case when: return nums1[mid] or return nums2[mid]
+
+recuse
+helper(new mid, new nums1, nums2)
+or 
+helper(new mid, nums1, new nums2)
+}
 
 
 """
@@ -45,6 +58,19 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: float
         """
+        totalsize = len(nums1) + len(nums2)
+
+        odd = False if totalsize % 2 == 1 else True
+
+        #Floor Division
+        mid1 = len(nums1) // 2
+        mid2 = len(nums2) // 2
+
+
+
+       
+
+         
     
                 
 test = Solution()
