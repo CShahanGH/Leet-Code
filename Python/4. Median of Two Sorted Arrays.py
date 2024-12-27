@@ -28,27 +28,8 @@ nums2.length == n
 
 #Idea 
 """
-For logrithmic time I need to use a divide and conquer strategy. 
-
-We need to check if the two arrays combined is even or odd becasue if the combined array is old the median is in the middle, but if the array is even the median is the middle two digits/2
-
-We need to calculate the midpoint of each array.
-
-Compare midpoints and remove a partion of an array.
-
-We need to recalculate the midpont of each array so we might want to use a recursive function 
-
-helper(mid, nums1, nums2)
-{
-base case when: return nums1[mid] or return nums2[mid]
-
-recuse
-helper(new mid, new nums1, nums2)
-or 
-helper(new mid, nums1, new nums2)
-}
-
-
+See Design
+Credits to Tushar Roy https://www.youtube.com/watch?v=LPFhl65R7ww&t=369s
 """
 
 class Solution(object):
@@ -62,20 +43,13 @@ class Solution(object):
 
         odd = True if totalsize % 2 == 1 else False
 
-        #Floor Division
-        mid1 = len(nums1) // 2
-        mid2 = len(nums2) // 2
+        
 
 
-
-       
-
-         
-    
                 
 test = Solution()
 
-nums1 = [1,2]
-nums2 = [3,4]
+nums1 = [1, 2, 3, 7, 8, 9]
+nums2 = [4, 5, 6, 10, 11, 12, 13]
 print(test.findMedianSortedArrays(nums1, nums2))
 
