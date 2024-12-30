@@ -19,6 +19,7 @@ Constraints:
 s consist of only digits and English letters.
 """
 
+#Attempt 1
 """
 Too Long 
 seen = []
@@ -41,46 +42,45 @@ seen = []
 """
 
 class Solution(object):
-    def isPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
-        start = 0
-        end = len(s) - 1
-        while start <= end:
-            char1 = s[start]
-            char2 = s[end]
-            if char1 != char2:
-                return False
-            start = start + 1
-            end = end - 1
-        return True
-
     def longestPalindrome(self, s):
         """
         :type s: str
         :rtype: str
         """
-        seen = []
-
-        if s not in seen:
-            seen.append(s)
-            if self.isPalindrome(s):
-                return s
         
-        endslice = s[:-1] #Slice the end of the string
-        startslice = s[1:] #Slice the beginning of the string
-        
-        endsubstring = self.longestPalindrome(endslice)
-        startsubstring = self.longestPalindrome(startslice)
-
-        if len(endsubstring) > len(startsubstring):
-            return endsubstring
-        else:
-            return startsubstring
-
+        #For each character 
+        longestpalindrome = ""
+        for i in range(len(s)):
+            #Odd example 1
+            left = i
+            right = i 
+            palindrome = self.findPalindrome(s, left, right)
+            if len(palindrome) > len(longestpalindrome):
+                longestpalindrome = palindrome
+            #Even example 2
+            left = i
+            right = i+1
+            palindrome = self.findPalindrome(s, left, right)
+            if len(palindrome) > len(longestpalindrome):
+                longestpalindrome = palindrome
+        return longestpalindrome
     
+    #Compare elements left and right
+    def findPalindrome(self, s, left, right):
+        while left >= 0 and right < len(s) and s[left] == s[right]:
+            left -= 1
+            right += 1
+        print(s[left+1:right])
+        return s[left+1:right] #return the two slices of the palindrome toghether 
+            
+                
+
+
+
+           
+
+        
+
 def testLongestPalindrome(output, testoutput):
     """
     :type s: str
@@ -122,3 +122,11 @@ if testLongestPalindrome(output, testoutput):
 else:
     print("Test 3 Fail")
 
+#Example 4 Test
+s = "dbbd"
+output = test.longestPalindrome(s)
+testoutput = ["dbbd"]
+if testLongestPalindrome(output, testoutput):
+    print("Test 4 pass")
+else:
+    print("Test 4 Fail")
