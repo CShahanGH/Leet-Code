@@ -24,7 +24,7 @@ It is guaranteed that the list represents a number that does not have leading ze
 
 #Implementation
 """
-Each node is in it's respective place of the decimal system. Meaning none 1 is in the one's place, node two is in the two's place, node 3 is in the 100s place (4, 1000, 5, 10000 etc)
+Each node is in it's respective place of the decimal system. Meaning node 1 is in the one's place, node two is in the two's place, node 3 is in the 100s place (4, 1000, 5, 10000 etc)
 So for each node. Sum = 0. Then traverse each node and multiply the number by it's spot in the decimal system (1 is 1, 2 is 10, 3, is 100) and add it to sum. Then add all sums together. 
 """
 # Definition for singly-linked list.

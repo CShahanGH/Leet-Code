@@ -20,32 +20,32 @@ Output: [0,1]
 
 """
 
+#Solution
+"""
+For each number in the array  (start at 0 index) record the difference between the target number and the current number in the array and save the number and it's index it in a map. Number is key value is index
+If the difference between the two numbers exist in the map. Return that numbers index in the array and the current numbers index
+
+Ex. 1
+First number 2: 
+Target - number = diff
+9 - 2 = 7
+check is dict contains diff. Fail
+Add 2 to the map with a value of 0
+Second number 7:
+9 - 7 = 2
+Check if dict contains 2. Success
+Return List[dict[2], currentIndex or (i)]
+Return 
+
+
+"""
+
 class Solution(object):
     def twoSum(self, nums, target):
         """
         :type nums: List[int]
         :type target: int
         :rtype: List[int]
-        """
-
-        #Solution
-        """
-        For each number in the array  (start at 0 index) record the difference between the target number and the current number in the array and save the number and it's index it in a map. Number is key value is index
-        If the difference between the two numbers exist in the map. Return that numbers index in the array and the current numbers index
-        
-        Ex. 1
-        First number 2: 
-        Target - number = diff
-        9 - 2 = 7
-        check is dict contains diff. Fail
-        Add 2 to the map with a value of 0
-        Second number 7:
-        9 - 7 = 2
-        Check if dict contains 2. Success
-        Return List[dict[2], currentIndex or (i)]
-        Return 
-
-
         """
 
         number_map = {}
