@@ -75,12 +75,6 @@ class Solution(object):
             
                 
 
-
-
-           
-
-        
-
 def testLongestPalindrome(output, testoutput):
     """
     :type s: str
@@ -91,6 +85,7 @@ def testLongestPalindrome(output, testoutput):
         assert output in testoutput
         return True
     except AssertionError as e: 
+        print(e)
         return False
 
 test = Solution() 
