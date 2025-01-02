@@ -61,17 +61,17 @@ class Solution(object):
         :type numRows: int
         :rtype: str
         """
-        rowCount = 0
+        rowCount = 1
         strings_by_row = [[] for i in range(numRows)]
         #Give letters a row
         for i in s:
-            strings_by_row[rowCount].append(i)
+            strings_by_row[rowCount - 1].append(i)
             #Increment or Decrement rowCount
             if numRows == 1:
                 increment = 0
-            elif rowCount == numRows - 1:
+            elif rowCount == numRows:
                 increment = -1
-            elif rowCount == 0:
+            elif rowCount == 1:
                 increment = 1
             rowCount = rowCount + increment
 
