@@ -5,8 +5,6 @@
 #Design (might be in Design folder)
 
 
-#Future imports for testing here
-
 #Start
 class Solution(object):
     pass #Starting Code Here
@@ -29,9 +27,9 @@ output = None
 answer = None
 
 if Test(output, answer):
-    print("Test 1  passed")
+    print("Test 1 passed")
 else:
-    print("Test 1 failed")
+    print(f"Test 1 failed got {output} expected {answer}")
 
 
 
