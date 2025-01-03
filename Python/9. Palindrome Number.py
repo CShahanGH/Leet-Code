@@ -37,7 +37,7 @@ Very similar to previous Palindrome problems instead we are dealing with integer
 
 Negative numbers are not palindromes 
 
-To avoid converting the integer into a string we can probably divide the integer into a stack by dividing it by 10 since we are in the decimal system and caputring it's remainder. 
+To avoid converting the integer into a string we can probably divide the integer into a list by dividing it by 10 since we are in the decimal system and caputring it's remainder. 
 
 Ex 121. 
 
@@ -46,6 +46,8 @@ Ex 121.
 1 / 10 = .1 1 goes in the 100's spot -> push 1 onto the stack 
 
 Then check if the length of the stack is even or odd for implementing the palindrome 
+
+Find the midpoint or midpoints of the list and check if it's a palindrome 
 
 Check if it's a palindrome similar to the helping function in 5. Longest Palindromic Substring 
 
@@ -67,7 +69,44 @@ class Solution(object):
         :type x: int
         :rtype: bool
         """
+        #Negative numbers are not palindromes 
+        if x < 0:
+            return False
+        
+        #Avoid converting to string
+        nums = []
+        while x > 0:
+            #Get the current remainder of x / 10
+            r = x % 10 
+            #Append r to list
+            nums.append(r)
+            #Update x by dividing by 10 and floor it to ignore the decimal 
+            x //= 10 
+        
+        #Check even or odd
+        even = True if len(nums) % 2 == 0 else False
+        
+        #Even Two midpoints
+        if(even):
+            left = len(nums) // 2 - 1
+            right = len(nums) // 2
+            return self.checkPalindrome(nums, left, right)
+            
 
+        #Odd One midpoint
+        else: 
+            left = right = len(nums) // 2
+            return self.checkPalindrome(nums, left, right)
+
+
+    #Helper function similar to 5. Longest Palindromic Substring but just checks for palindrome
+    def checkPalindrome(self, num_list, left, right):
+            while left >= 0 and right < len(num_list):
+                if num_list[left] != num_list[right]:
+                    return False
+                left -= 1
+                right += 1
+            return True
 
 #Test Code
 def Test(program_output, expected_output):
@@ -81,13 +120,29 @@ def Test(program_output, expected_output):
 solution = Solution()
 
 #Test 1
-
-input = None
-output = None
-answer = None
-
+input = 121
+output = solution.isPalindrome(input)
+answer = True
 if Test(output, answer):
     print("Test 1 passed")
 else:
     print(f"Test 1 failed got {output} expected {answer}")
+
+#Test 2
+input = -121
+output = solution.isPalindrome(input)
+answer = False
+if Test(output, answer):
+    print("Test 2 passed")
+else:
+    print(f"Test 2 failed got {output} expected {answer}")
+
+#Test 3
+input = 10
+output = solution.isPalindrome(input)
+answer = False
+if Test(output, answer):
+    print("Test 3 passed")
+else:
+    print(f"Test 3 failed got {output} expected {answer}")
 
