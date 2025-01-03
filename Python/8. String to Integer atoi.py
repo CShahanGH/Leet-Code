@@ -103,7 +103,13 @@ class Solution(object):
 
         #1. Ignore White Space
         while s[0] == " ":
-            s = s[1:]
+                s = s[1:]
+                if len(s) == 0: #Stop if string is empty 
+                    return 0
+                
+
+        
+
         
         #2. Determine the sign by checking if the next character is '-' or '+', assuming positivity if neither present.
         sign = -1 if s[0] == "-" else 1
@@ -111,6 +117,8 @@ class Solution(object):
         #Trim - or + sign
         if s[0] == "-" or s[0]== "+":
             s = s[1:]
+        if len(s) == 0: #Stop if string is empty
+            return 0
 
         #3. Conversion: Read the integer by skipping leading zeros until a non-digit character is encountered or the end of the string is reached. 
         # If no digits were read, then the result is 0.
@@ -118,8 +126,6 @@ class Solution(object):
         #3.1. Ignore Leading Zeroes
         while s[0] == "0":
             s = s[1:]
-        
-        print(s)
 
         #3 Read integer similar to the reverse integer problem but stop when no longer an integer
         for i in range (0, len(s)):
@@ -199,3 +205,21 @@ if Test(output, answer):
     print("Test 4 passed")
 else:
     print(f"Test 5 failed got {output} expected {answer}")
+
+#Test 6
+input = "                                                                                                     "
+output = solution.myAtoi(input)
+answer = 0
+if Test(output, answer):
+    print("Test 6 passed")
+else:
+    print(f"Test 6 failed got {output} expected {answer}")
+
+#Test 7
+input = "+"
+output = solution.myAtoi(input)
+answer = 0
+if Test(output, answer):
+    print("Test 7 passed")
+else:
+    print(f"Test 7 failed got {output} expected {answer}")
