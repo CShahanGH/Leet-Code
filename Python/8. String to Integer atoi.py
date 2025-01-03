@@ -105,7 +105,7 @@ class Solution(object):
         while s[0] == " ":
                 s = s[1:]
                 if len(s) == 0: #Stop if string is empty 
-                    return 0
+                    return ans
                 
 
         
@@ -118,7 +118,7 @@ class Solution(object):
         if s[0] == "-" or s[0]== "+":
             s = s[1:]
         if len(s) == 0: #Stop if string is empty
-            return 0
+            return ans
 
         #3. Conversion: Read the integer by skipping leading zeros until a non-digit character is encountered or the end of the string is reached. 
         # If no digits were read, then the result is 0.
@@ -127,7 +127,7 @@ class Solution(object):
         while s[0] == "0":
             s = s[1:]
             if len(s) == 0: #Stop if string is empty 
-                    return 0
+                    return ans
 
         #3 Read integer similar to the reverse integer problem but stop when no longer an integer
         for i in range (0, len(s)):
@@ -225,3 +225,12 @@ if Test(output, answer):
     print("Test 7 passed")
 else:
     print(f"Test 7 failed got {output} expected {answer}")
+
+#Test 8
+input = "000000000000000000"
+output = solution.myAtoi(input)
+answer = 0
+if Test(output, answer):
+    print("Test 8 passed")
+else:
+    print(f"Test 8 failed got {output} expected {answer}")
