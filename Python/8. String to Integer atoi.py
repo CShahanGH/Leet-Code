@@ -126,6 +126,8 @@ class Solution(object):
         #3.1. Ignore Leading Zeroes
         while s[0] == "0":
             s = s[1:]
+            if len(s) == 0: #Stop if string is empty 
+                    return 0
 
         #3 Read integer similar to the reverse integer problem but stop when no longer an integer
         for i in range (0, len(s)):
