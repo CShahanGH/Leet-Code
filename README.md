@@ -1,4 +1,4 @@
-#Leet Code
+# Leet Code
 
 This repository contains designs and implementations of algorithim questions on leet code
 
