@@ -64,13 +64,9 @@ class Solution(object):
 
             return False
                 
-
-            
-            
-
-
         #Start dfs at 0 indexes
         return dfs(0, 0)
+    
 #Old Code
 """
  sp = 0 #string index pointer
