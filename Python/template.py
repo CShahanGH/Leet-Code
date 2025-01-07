@@ -15,12 +15,12 @@ class Solution(object):
 
 
 #Test Code
-def Test(program_output, expected_output):
+def Test(id, output, answer):
     try:
-        assert program_output == expected_output
-        return True
+        assert output == answer
+        print(f"Test {id} passed")
     except:
-        return False
+        print(f"Test {id} failed got {output} expected {answer}")
 
 
 solution = Solution()
@@ -30,10 +30,7 @@ input = None
 output = None
 answer = None
 
-if Test(output, answer):
-    print("Test 1 passed")
-else:
-    print(f"Test 1 failed got {output} expected {answer}")
+Test (1, output, answer) 
 
 
 
