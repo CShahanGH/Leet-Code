@@ -35,7 +35,7 @@ It is guaranteed for each appearance of the character '*', there will be a previ
 
 #Design (In Design Folder)
 """
-You can look at my attempt in the design folder and old code, but this solution comes from Neet Code
+You can look at my attempt in the design folder and old code, but this top-down solution comes from Neet Code
 """
 
 #Start
@@ -46,23 +46,30 @@ class Solution(object):
         :type p: str
         :rtype: bool
         """
+
+        index_map = {} #Memoize indexes for repeated calculations 
         #Recursive DFS  
         def dfs (sp, pp):
+
+            if (sp, pp) in index_map:
+                return index_map[(sp, pp)]
             if sp >= len(s) and pp >= len(p): #String and Pattern Matched
                 return True
-            if sp < len(s) and pp >= len(p): #String has text left over
+            if sp < len(s) and pp >= len(p): #String has text left over so match
                 return False
 
             
             match = sp < len(s) and (s[sp] == p[pp] or p[pp] == ".") #True if Match False if No Match - Can't compute if string is out of bounds
             
-            if pp + 1 < len(p) and p[pp+1] == "*": #p[0] will never be a star but pp+1 might be out of bounds will be true if next pp is *
-                return dfs(sp, pp+2) or match and dfs(sp+1, pp) #Don't use the star or Use the star if there is a match
-            
+            if pp + 1 < len(p) and p[pp+1] == "*": #p[0] will never be a star but pp+1 might be out of bounds - will be true if next pp is *
+                index_map[(sp, pp)] = dfs(sp, pp+2) or match and dfs(sp+1, pp)  #skip the * or use the char before the * #MEMOIZE
+                return index_map[(sp, pp)]
             if match:
-                return dfs(sp+1, pp+1)
+                index_map[(sp,pp)] = dfs(sp+1, pp+1) #MEMOIZE
+                return index_map[(sp, pp)]
 
-            return False
+            index_map[(sp, pp)] = False #MEMOIZE
+            return index_map[(sp, pp)]
                 
         #Start dfs at 0 indexes
         return dfs(0, 0)
@@ -170,7 +177,7 @@ def Test(program_output, expected_output):
     try:
         assert program_output == expected_output
         return True
-    except AssertionError as e: 
+    except:
         return False
 
 

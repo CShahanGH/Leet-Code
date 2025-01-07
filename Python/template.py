@@ -19,7 +19,7 @@ def Test(program_output, expected_output):
     try:
         assert program_output == expected_output
         return True
-    except AssertionError as e: 
+    except:
         return False
 
 
