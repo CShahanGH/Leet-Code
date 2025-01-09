@@ -9,7 +9,12 @@
 
 """
 
-#Start
+#Learned
+"""
+
+"""
+
+#Code Start
 class Solution(object):
     pass #Starting Code Here
 
