@@ -64,94 +64,43 @@ Constraints:
 
 #Design
 """
-My first idea is to divide the number by the largest numeral is possible. Keep a count of each number. Save Symbol as a string or char in a hashmap. 
+My first idea is to subtract the number by the largest numeral is possible. Keep a count of each number. Save Symbol as a string or char in a hashmap. 
+
+First design worked but was slow. 
+
+We can just iterate through the symbol's integer values and append the symbol(s) to the string.
+
+Second design works much faster than 1st
 """
 
-#Start
+#Code Start
 class Solution(object):
-    def intToRoman(self, num):
-        """
-        :type num: int
-        :rtype: str
-        """
+    def intToRoman(self, num: int) -> str:
 
         Roman = "" #answer string
 
-        #Store counts of differrent symbols 1000, 500, 100, 50, 10, 5, 1
-        count = {
-            'M' : 0, #1000
-            'CM': 0, #900
-            'D' : 0, #500
-            'CD': 0, #400
-            'C' : 0, #100
-            'XC': 0, #90
-            'L' : 0, #50
-            'XL': 0, #40
-            'X' : 0, #10
-            'IX': 0, #9
-            'V' : 0, #5
-            'I' : 0  #1
+        #Map into to symbol
+        int_to_symbol = {
+            1000 : 'M',
+            900 :'CM',
+            500 : 'D',  
+            400 : 'CD',
+            100 : 'C',
+            90 : 'XC', 
+            50 : 'L', 
+            40 : 'XL',
+            10 : 'X', 
+            9 : 'IX', 
+            5 : 'V', 
+            4 : 'IV',
+            1 : 'I', 
         }
 
-        #This is why count is biggest numeral to smallest
-        for n in count:
-            match n: #Trying something new
-                case 'M': #Don't need to do 4 or 9 check for M
-                    while (num >= 1000):
-                        num -= 1000
-                        count[n] += 1
-                case 'D':
-                    while (num >= 500):
-                        num -= 500
-                        count[n] += 1
-                case 'C':
-                    while (num >= 100):
-                        num -= 100
-                        count[n] += 1
-                case 'L':
-                    while (num >= 50):
-                        num -= 50
-                        count[n] += 1
-                case 'X':
-                    while (num >= 10):
-                        num -= 10
-                        count[n] += 1     
-                case 'V':
-                    while (num >= 5):
-                        num -= 5
-                        count[n] += 1
-                case 'I':
-                    while (num >= 1):
-                        num -= 1
-                        count[n] += 1
-
-        #Handle 4 (IV), 9 (IX), 40 (XL), 90 (XC), 400 (CD) and 900 (CM).
-        if count['C'] == 4 and count['D'] == 1: #CM
-            count['CM'] = 1
-            count['C'] = 0
-            count ['D'] = 0
-        elif count['C'] == 4: #CD
-            count['CD'] = 1
-            count['C'] = 0
-        if count['X'] == 4 and count['L'] == 1: #XC
-            count['XC'] = 1
-            count['X'] = 0
-            count ['L'] = 0
-        elif count['X'] == 4: #XL
-            count['XL'] = 1
-            count['X'] = 0
-        if count['I'] == 4 and count['V'] == 1: #IX
-            count['IX'] = 1
-            count['I'] = 0
-            count ['V'] = 0
-        elif count['I'] == 4: #IV
-            count['IV'] = 1
-            count['I'] = 0
-        
-        #Build string
-        for n in count:
-            for i in range(0, count[n]):
-                Roman += n
+        #Loop through each symbol
+        for i in int_to_symbol:
+            while num >= i: #Subtract largest symbol from the number
+                num -= i
+                Roman += int_to_symbol[i] #Append the numberal to the string
 
         return Roman
 
