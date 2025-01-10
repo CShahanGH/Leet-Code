@@ -6,6 +6,6 @@ The purpose of this repository is to practice fundamentals of data structures an
 
 Design tool used - Excalidraw https://excalidraw.com/
 
-Implementations in - Python 
+Implementations in - Python3
 
 Future Implementations (C++, C#, Javascript or Typescript)
