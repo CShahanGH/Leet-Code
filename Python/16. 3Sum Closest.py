@@ -38,7 +38,7 @@ Use the absolute value to determine the distance between the target and two othe
 """
 I wish recursion was fast
 
-
+Solution don't use recursion
 """
 
 #Code Start
