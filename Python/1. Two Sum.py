@@ -22,7 +22,11 @@ Output: [0,1]
 
 #Solution
 """
-For each number in the array  (start at 0 index) record the difference between the target number and the current number in the array and save the number and it's index it in a map. Number is key value is index
+For each number in the array (start at 0 index) record the difference between the target number and the current number in the array and 
+save the number and it's index it in a map. 
+
+Number is key value is index {val : array_index}
+
 If the difference between the two numbers exist in the map. Return that numbers index in the array and the current numbers index
 
 Ex. 1
