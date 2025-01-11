@@ -19,7 +19,7 @@ class Solution(object):
     pass #Starting Code Here
 
 
-#Test Code
+#Test Code - sometimes needs to change depending on the data type of output and answer
 def Test(id, output, answer):
     try:
         assert output == answer
