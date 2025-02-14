@@ -49,7 +49,7 @@ class Solution:
 
         while left <= right:
 
-            mid = left + (right - left) // 2
+            mid = left + (right - left) // 2 #Int overflow protection 
 
             if nums[mid] == target:
                 return mid
